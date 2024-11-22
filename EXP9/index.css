@@ -1,3 +1,49 @@
-.logo{
-    background-image: url(logo.png);
+body {
+    background-color: #1D1E18;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #0d1321;
+}
+
+.logo {
+    position: relative;
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: url('https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGhkZ3ZreWU5eHhxdTBiMml5MTlkNzZvMjhvczI0cWN0cTczZnY1ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/fSRQtBAzrPokPCItuu/giphy.webp');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 58px;
+    height: 58px;
+    z-index: 2;
+    position: absolute;
+    border-radius: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f8f9fa;
 }
