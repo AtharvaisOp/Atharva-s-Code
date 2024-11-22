@@ -1,5 +1,5 @@
 body {
-    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);;
+    background-image: linear-gradient(to right, #434343 0%, black 100%);
     margin: 0;
     font-family: Arial, sans-serif;
 }
@@ -53,3 +53,4 @@ body {
     color: #f8f9fa;
     transform: scale(1.1);
 }
+
