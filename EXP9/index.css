@@ -183,71 +183,223 @@ body {
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 10px;
     display: flex;
-    flex-direction: column;
+    justify-content: space-around; /* To align the boxes side by side */
     align-items: center;
     text-align: center;
-}
-
-#skill-title {
-    font-size: 4rem;
-    color: #f8f9fa;
-    margin-bottom: 30px;
-}
-
-.skills-container {
-    display: flex;
     flex-wrap: wrap;
+   border-radius: 50px;
+}
+
+.c1 {
+    display: flex;
+    width: 250px;
+    padding: 50px 0;
+    border-radius: 8px;
+    background: #fff;
+    row-gap: 30px;
+    flex-direction: column;
+    align-items: center;
+}
+#Myskills{
+    border-radius: 30px;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+}
+.circular-progress {
+    position: relative;
+    height: 150px; /* Reduced size for better fit */
+    width: 150px;  /* Reduced size for better fit */
+    border-radius: 50%;
+    background: conic-gradient(#7d2ae8 0deg, #ededed 0deg);
+    display: flex;
+    align-items: center;
     justify-content: center;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.progress-value {
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: #7d2ae8;
+}
+
+.text {
+    font-size: 20px;
+    font-weight: 500;
+    color: #606060;
+    margin-top: 10px;
+}
+.Projects {
+    margin: 50px 20px;
+    padding: 50px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 
-.skill-card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 10px;
-    border: 1px solid white;
-    background-color: rgba(217, 217, 217, 0.58);
-    border-radius: 10px;
-    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+.project-container {
+    position: relative;
     width: 300px;
-    height: 120px;
-    transition: transform 0.3s ease-in-out;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    background: #fff;
 }
 
-.skill-card:hover {
+.project-container:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
 }
 
-.skill-image {
-    flex: 1;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px 0 0 10px;
-}
-
-.skill-text {
-    flex: 2;
-    padding: 20px;
-    font-size: 1.5rem;
+.project-container h2 {
+    margin: 0;
+    padding: 15px;
+    font-size: 1.8rem;
+    text-align: center;
+    background: #7d2ae8;
+    color: #fff;
     font-weight: bold;
-    color: black;
-    text-align: left;
+    transition: background 0.3s;
 }
 
-#skill1 {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/C_Programming_Language.svg/1853px-C_Programming_Language.svg.png');
+.project-container:hover h2 {
+    background: #5a1fa3;
 }
 
-#skill2 {
-    background-image: url('https://img.freepik.com/premium-vector/web-design-logo-vector-templet_1070930-291.jpg?semt=ais_hybrid');
+.project-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s, filter 0.3s;
 }
 
-#skill3 {
-    background-image: url('https://www.scrapestorm.com/wp-content/uploads/2023/11/image-34.png');
+.project-container:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.9);
 }
 
-#skill4 {
-    background-image: url('https://hsc-global.my/wp-content/uploads/2022/08/gradient-ui-ux-background_23-2149052117.webp');
+/* Add animation to project content */
+.project-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1;
 }
+
+.project-container:hover::after {
+    opacity: 1;
+}
+h1{
+    color:cyan;
+    text-align: center;
+}
+/* Utility class to visually hide elements */
+.clip {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .svg--source {
+    display: none;
+  }
+  
+  .svg--icon {
+    width: 100%;
+    max-width: 3rem; /* Adjust icon size */
+    height: 100%;
+    max-height: 3rem;
+    display: block;
+    fill: currentColor;
+  }
+  
+  /* Wrapper class for horizontal alignment */
+  .wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem; /* Space between icons */
+    padding: 10px;
+    width: auto; /* Compact width */
+  }
+  
+  /* Individual share icons */
+  .share {
+    width: 3rem; /* Adjust size */
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #353c4a;
+    border: 0.125rem solid #f3f3f3;
+    box-shadow: 0 0 8px rgba(50, 50, 50, 0.15);
+    border-radius: 50%;
+    transition: 250ms;
+    flex-shrink: 0;
+  }
+  
+  .share:hover, .share:focus {
+    background: #f1f1f1;
+    outline-color: inherit;
+  }
+  
+  /* Icon-specific hover effects */
+  .twitter:hover, .twitter:focus {
+    color: #00ACED;
+    box-shadow: 0 0 12px #00ACED;
+  }
+  
+  .github:hover, .github:focus {
+    color: #4183c4;
+    box-shadow: 0 0 12px #4183c4;
+  }
+  
+  .pinterest:hover, .pinterest:focus {
+    color: #bd081c;
+    box-shadow: 0 0 12px #bd081c;
+  }
+  
+  .youtube:hover, .youtube:focus {
+    color: #cd201f;
+    box-shadow: 0 0 12px #cd201f;
+  }
+  
+  .facebook:hover, .facebook:focus {
+    color: #3b5998;
+    box-shadow: 0 0 12px #3b5998;
+  }
+  
+  .google:hover, .google:focus {
+    color: #dd4b39;
+    box-shadow: 0 0 12px #dd4b39;
+  }
+  
+ 
