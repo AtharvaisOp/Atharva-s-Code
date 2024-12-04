@@ -1,0 +1,144 @@
+body, html { 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+}
+#start {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+}
+p {
+    font-size: 6rem;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.container {
+    display: none; /* Initially hide the container */
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    transition: opacity 0.5s ease, display 0.5s ease;
+    opacity: 0;
+}
+
+.container.show {
+    display: flex; /* Show container */
+    opacity: 1;
+}
+
+.form_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #EDDCD9;
+    height: auto;
+    width: 900px; /* Adjusted width */
+    border: 2px solid #264143;
+    border-radius: 20px;
+    box-shadow: 3px 4px 0px 1px #E99F4C;
+}
+
+.title {
+    color: #264143;
+    font-weight: 900;
+    font-size: 3em;
+}
+
+.sub_title {
+    font-weight: 600;
+    margin: 5px 0;
+    font-size: 3rem;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin: 40px;
+    align-self: center;
+    align-items: center; 
+    justify-content: center;
+}
+
+.form_style {
+    outline: none;
+    border: 2px solid #264143;
+    box-shadow: 3px 4px 0px 1px #E99F4C;
+    width: 260px; /* Adjusted width */
+    padding: 12px 10px;
+    border-radius: 4px;
+    font-size: 15px;
+}
+
+.form_style:focus, .btn:focus {
+    transform: translateY(4px);
+    box-shadow: 1px 2px 0px 0px #E99F4C;
+}
+
+.btn {
+    padding: 15px;
+    margin: 25px 0px;
+    width: 260px; /* Adjusted width */
+    font-size: 15px;
+    background: #cb84a7;
+    border-radius: 10px;
+    font-weight: 800;
+    box-shadow: 3px 3px 0px 0px #E99F4C;
+}
+
+.btn:hover {
+    opacity: .9;
+}
+/* Add this CSS to your styles.css file or inside a <style> tag in your HTML */
+.alert-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f4f4f4;
+    border: 2px solid #264143;
+    border-radius: 10px;
+    box-shadow: 3px 4px 0px 1px #E99F4C;
+    padding: 20px;
+    z-index: 1000;
+    text-align: center;
+    max-width: 80%; /* Adjust max-width for responsiveness */
+    width: 300px; /* Default width for larger screens */
+}
+
+.alert-box p {
+    white-space: pre-wrap;
+    font-size: 2.5rem; /* Preserve newlines */
+}
+
+.alert-box button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #cb84a7;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%; /* Make button take full width for better touch targets */
+}
+
+@media (max-width: 600px) {
+    .alert-box {
+        width: 90%; /* Adjust width for small screens */
+        padding: 15px; /* Adjust padding for small screens */
+    }
+
+    .alert-box button {
+        padding: 8px; /* Adjust button padding for small screens */
+    }
+}
+

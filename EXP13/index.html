@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects|EXP13</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button id="start"> 
+        <p>Click Anywhere To Start</p> 
+    </button>
+    <div class="container hidden" id="formContainer">
+        <div class="form_area" >
+            <p class="title">Fill In Your Info</p>
+            <form id="userForm">
+                <div class="form_group">
+                    <label class="sub_title" for="Name" >Name</label>
+                    <input autocomplete="cc-name" placeholder="Enter your full name" id="Name" name="name" class="form_style" type="text">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="Age">Age</label>
+                    <input autocomplete="cc-number" placeholder="Enter your Age" id="Age" name="age" class="form_style" type="number">
+                </div>
+                <div class="form_group">
+                    <label class="sub_title" for="Job" >Job</label>
+                    <input placeholder="Enter your Profession" id="Job" name="job" class="form_style" type="text">
+                </div>
+                <div>
+                    <button class="btn" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
