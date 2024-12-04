@@ -1,0 +1,117 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #303036; /* Changed to dark grey */
+    background-color: #FFFAFF; /* Added background color */
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #303036; /* Changed to dark grey */
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+section {
+    padding: 20px;
+    border-bottom: 2px solid #30BCED; /* Added blue border */
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #FC5130; /* Changed to red */
+    margin-bottom: 10px;
+    font-size: 1.5em;
+}
+
+button {
+    background-color: #30BCED; /* Changed to blue */
+    color: #FFFAFF; /* Changed to white */
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #FC5130; /* Changed to red */
+    color: #FFFAFF; /* Changed to white */
+}
+
+#mouseMessage, #charCount {
+    color: #050401; /* Changed to black */
+    margin-top: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 1px solid #303036; /* Changed to dark grey */
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+form label {
+    display: block;
+    color: #303036; /* Changed to dark grey */
+    margin-bottom: 5px;
+}
+
+form input[type="text"] {
+    margin-bottom: 10px;
+}
+
+form button {
+    background-color: #30BCED; /* Changed to blue */
+    color: #FFFAFF; /* Changed to white */
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #FC5130; /* Changed to red */
+    color: #FFFAFF; /* Changed to white */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    h2 {
+        font-size: 1.2em;
+    }
+
+    button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+    input[type="text"] {
+        font-size: 0.9em;
+    }
+
+    form button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+}
