@@ -4,16 +4,22 @@ body, html {
     right: 0;
     bottom: 0;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
 }
 #start {
     width: 100%;
     height: 100%;
     background: transparent;
     border: none;
+    cursor: pointer;
 }
 p {
     font-size: 6rem;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
 .hidden {
@@ -42,31 +48,35 @@ p {
     flex-direction: column;
     background-color: #EDDCD9;
     height: auto;
-    width: 900px; /* Adjusted width */
+    width: 90%; /* Adjusted width for responsiveness */
+    max-width: 600px; /* Maximum width for larger screens */
     border: 2px solid #264143;
     border-radius: 20px;
     box-shadow: 3px 4px 0px 1px #E99F4C;
+    padding: 20px;
+    margin: 10px; /* Margin for small screens */
 }
 
 .title {
     color: #264143;
     font-weight: 900;
-    font-size: 3em;
+    font-size: 2.5em; /* Adjusted font size */
+    text-align: center;
 }
 
 .sub_title {
     font-weight: 600;
     margin: 5px 0;
-    font-size: 3rem;
+    font-size: 1.5rem; /* Adjusted font size */
 }
 
 .form_group {
     display: flex;
     flex-direction: column;
     align-items: baseline;
-    margin: 40px;
-    align-self: center;
-    align-items: center; 
+    margin: 20px;
+    width: 100%; /* Full width for better alignment */
+    align-items: center;
     justify-content: center;
 }
 
@@ -74,10 +84,11 @@ p {
     outline: none;
     border: 2px solid #264143;
     box-shadow: 3px 4px 0px 1px #E99F4C;
-    width: 260px; /* Adjusted width */
+    width: 100%; /* Full width for responsiveness */
+    max-width: 400px; /* Maximum width for larger screens */
     padding: 12px 10px;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .form_style:focus, .btn:focus {
@@ -88,8 +99,9 @@ p {
 .btn {
     padding: 15px;
     margin: 25px 0px;
-    width: 260px; /* Adjusted width */
-    font-size: 15px;
+    width: 100%; /* Full width for responsiveness */
+    max-width: 400px; /* Maximum width for larger screens */
+    font-size: 1rem;
     background: #cb84a7;
     border-radius: 10px;
     font-weight: 800;
@@ -99,7 +111,8 @@ p {
 .btn:hover {
     opacity: .9;
 }
-/* Add this CSS to your styles.css file or inside a <style> tag in your HTML */
+
+/* Alert Box Styles */
 .alert-box {
     position: fixed;
     top: 50%;
@@ -118,7 +131,7 @@ p {
 
 .alert-box p {
     white-space: pre-wrap;
-    font-size: 2.5rem; /* Preserve newlines */
+    font-size: 1.5rem; /* Adjusted font size */
 }
 
 .alert-box button {
@@ -140,5 +153,8 @@ p {
     .alert-box button {
         padding: 8px; /* Adjust button padding for small screens */
     }
-}
 
+    .title, .sub_title, .alert-box p {
+        font-size: 1.2rem; /* Adjust font size for small screens */
+    }
+}
