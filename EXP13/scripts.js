@@ -2,7 +2,9 @@ document.addEventListener("DOMContentLoaded", function() {
     const startButton = document.getElementById("start");
     const formContainer = document.getElementById("formContainer");
     const form = document.getElementById("userForm");
-
+    const arrayDiv = document.querySelector(".array");
+    const sumButton = document.getElementById("sum");
+    const resultElement = document.getElementById("result");
     startButton.addEventListener("click", function() {
         this.style.display = 'none';
         formContainer.style.display = 'flex';
@@ -10,43 +12,74 @@ document.addEventListener("DOMContentLoaded", function() {
             formContainer.classList.add("show");
         }, 10);
     });
-
     form.addEventListener("submit", function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
+        event.preventDefault();
         const formData = {
             name: document.getElementById("Name").value,
             age: document.getElementById("Age").value,
             job: document.getElementById("Job").value,
         };
-
-        console.log(formData); // Log the form data to the console
-        displayCustomAlert(formData); // Call the custom alert function with form data
+        console.log(formData); 
+        displayCustomAlert(formData); 
     });
-
     function displayCustomAlert(data) {
         const message = `Hello ${data.name}! Here are the details you entered:\n\n` +
                         `Age: ${data.age}\n` +
                         `Job: ${data.job}\n\n` +
                         `Thank you for submitting your information!`;
-        
-        // Creating a custom alert box
         const alertBox = document.createElement("div");
-        alertBox.classList.add("alert-box"); // Apply CSS class for styling
-
+        alertBox.classList.add("alert-box"); 
         const messagePara = document.createElement("p");
         messagePara.textContent = message;
-        messagePara.style.whiteSpace = "pre-wrap"; // Preserve newlines
-        
+        messagePara.style.whiteSpace = "pre-wrap";
         const closeButton = document.createElement("button");
         closeButton.textContent = "Close";
-
         closeButton.addEventListener("click", function() {
             document.body.removeChild(alertBox);
+            formContainer.style.display = 'none';
+            arrayDiv.style.display = 'block';
         });
-
         alertBox.appendChild(messagePara);
         alertBox.appendChild(closeButton);
         document.body.appendChild(alertBox);
     }
+    let numbers = [1, 2, 3, 4, 5];
+    function sumUsingForEach(arr) {
+        let sum = 0;
+        arr.forEach(function(number) {
+            sum += number;
+        });
+        return sum;
+    }
+    function sumUsingReduce(arr) {
+        return arr.reduce(function(accumulator, currentValue) {
+            return accumulator + currentValue;
+        }, 0);
+    }
+    let sumForEach = sumUsingForEach(numbers);
+    let sumReduce = sumUsingReduce(numbers);
+
+    sumButton.addEventListener("click", function() {
+        resultElement.textContent = `Sum using forEach: ${sumForEach}, Sum using reduce: ${sumReduce}`;
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    function updateDateTime() {
+        const now = new Date();
+        const dateTimeString = now.toLocaleString('en-US', {
+            weekday: 'long', 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric', 
+            hour: 'numeric', 
+            minute: 'numeric', 
+            second: 'numeric',
+            hour12: true
+        });
+
+        document.getElementById('datetime').textContent = dateTimeString;
+    }
+
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
 });
