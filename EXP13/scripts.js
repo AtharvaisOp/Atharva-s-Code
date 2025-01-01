@@ -67,18 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
             return accumulator + currentValue;
         }, 0);
     }
-
     sumButton.addEventListener("click", function() {
         const userNumber = parseInt(userInput.value); // Convert user input to a number
-        if (!isNaN(userNumber)) {
-            updateNumbersArray(userNumber); // Update array with user input
-            let sumForEach = sumUsingForEach(numbers);
-            let sumReduce = sumUsingReduce(numbers);
-            resultElement.textContent = `Sum using forEach: ${sumForEach}, Sum using reduce: ${sumReduce}`;
+        if (!isNaN(userNumber) && userNumber > 0) {
+            // Generate an array of numbers from 1 to userNumber
+            let numbers = Array.from({ length: userNumber }, (v, k) => k + 1);
+            
+            // Sum of numbers from 1 to n using reduce
+            let sumReduce = numbers.reduce((acc, currentValue) => acc + currentValue, 0);
+            
+            resultElement.textContent = `Sum from 1 to ${userNumber}= ${sumReduce}`;
         } else {
-            resultElement.textContent = 'Please enter a valid number.';
+            resultElement.textContent = 'Please enter a valid positive number.';
         }
     });
+    
+    
+    
 });
 
 document.addEventListener("DOMContentLoaded", function() {
