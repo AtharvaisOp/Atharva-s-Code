@@ -3,8 +3,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const formContainer = document.getElementById("formContainer");
     const form = document.getElementById("userForm");
     const arrayDiv = document.querySelector(".array");
+    const userInput = document.getElementById("userInput");
     const sumButton = document.getElementById("sum");
     const resultElement = document.getElementById("result");
+    
     startButton.addEventListener("click", function() {
         this.style.display = 'none';
         formContainer.style.display = 'flex';
@@ -12,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             formContainer.classList.add("show");
         }, 10);
     });
+    
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         const formData = {
@@ -19,9 +22,10 @@ document.addEventListener("DOMContentLoaded", function() {
             age: document.getElementById("Age").value,
             job: document.getElementById("Job").value,
         };
-        console.log(formData); 
-        displayCustomAlert(formData); 
+        console.log(formData);
+        displayCustomAlert(formData);
     });
+    
     function displayCustomAlert(data) {
         const message = `Hello ${data.name}! Here are the details you entered:\n\n` +
                         `Age: ${data.age}\n` +
@@ -43,7 +47,13 @@ document.addEventListener("DOMContentLoaded", function() {
         alertBox.appendChild(closeButton);
         document.body.appendChild(alertBox);
     }
-    let numbers = [1, 2, 3, 4, 5];
+
+    let numbers = [1, 2, 3, 4]; // Initial array of numbers
+
+    function updateNumbersArray(newNumber) {
+        numbers.push(newNumber); // Add the new number to the array
+    }
+
     function sumUsingForEach(arr) {
         let sum = 0;
         arr.forEach(function(number) {
@@ -51,18 +61,26 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         return sum;
     }
+
     function sumUsingReduce(arr) {
         return arr.reduce(function(accumulator, currentValue) {
             return accumulator + currentValue;
         }, 0);
     }
-    let sumForEach = sumUsingForEach(numbers);
-    let sumReduce = sumUsingReduce(numbers);
 
     sumButton.addEventListener("click", function() {
-        resultElement.textContent = `Sum using forEach: ${sumForEach}, Sum using reduce: ${sumReduce}`;
+        const userNumber = parseInt(userInput.value); // Convert user input to a number
+        if (!isNaN(userNumber)) {
+            updateNumbersArray(userNumber); // Update array with user input
+            let sumForEach = sumUsingForEach(numbers);
+            let sumReduce = sumUsingReduce(numbers);
+            resultElement.textContent = `Sum using forEach: ${sumForEach}, Sum using reduce: ${sumReduce}`;
+        } else {
+            resultElement.textContent = 'Please enter a valid number.';
+        }
     });
 });
+
 document.addEventListener("DOMContentLoaded", function() {
     function updateDateTime() {
         const now = new Date();
