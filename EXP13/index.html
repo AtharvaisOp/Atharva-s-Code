@@ -3,45 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Objects|EXP13</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Trip Cost Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+HU:wght@100..400&family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <script>
+        // Customizing Tailwind CSS theme for the Inter font family
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
 </head>
-<body>
-    <button id="start"> 
-        <p>Click Anywhere To Start</p> 
-    </button>
-    <div class="container hidden" id="formContainer">
-        <div class="form_area">
-            <p class="title">Fill In Your Info</p>
-            <form id="userForm">
-                <div class="form_group">
-                    <label class="sub_title" for="Name">Name</label>
-                    <input autocomplete="cc-name" placeholder="Enter your full name" id="Name" name="name" class="form_style" type="text">
+<body class="bg-gray-100 flex items-center justify-center min-h-screen font-sans" id="body" >
+
+    <div class="w-full max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <div class="p-6 md:p-10" id="innerDiv" >
+                <div class="flex justify-between items-center mb-2">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800" id="ttl">Trip Cost Calculator</h1>
+                    <a href="https://share.google/lDZ886GDNdFGqxAs6" target="_blank" class="btn-shine">Contact Us</a>
                 </div>
-                <div class="form_group">
-                    <label class="sub_title" for="Age">Age</label>
-                    <input autocomplete="cc-number" placeholder="Enter your Age" id="Age" name="age" class="form_style" type="number">
+                <p class="text-gray-500 mb-8">Estimate your travel expenses with ease.</p>
+
+                <div id="calculator-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="start-location" class="block text-sm font-medium text-gray-700 mb-2">Starting Location</label>
+                            <input type="text" id="start-location" placeholder="e.g., Mumbai, India" style="background-color: #F3FAE1;" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                        <div>
+                            <label for="end-location" class="block text-sm font-medium text-gray-700 mb-2"  >Destination</label>
+                            <input type="text" id="end-location" placeholder="e.g., Delhi, India" style="background-color: #F3FAE1;" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                        </div>
+                    </div>
+
+                    <button id="calculate-btn" class="button">
+                        Calculate Cost
+                    </button>
                 </div>
-                <div class="form_group">
-                    <label class="sub_title" for="Job">Job</label>
-                    <input placeholder="Enter your Profession" id="Job" name="job" class="form_style" type="text">
+
+                <div id="loading-spinner" class="hidden text-center my-8">
+                    <svg class="animate-spin h-8 w-8 text-indigo-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <p class="mt-2 text-gray-600">Calculating your route...</p>
                 </div>
-                <div>
-                    <button class="btn" type="submit">Submit</button>
+
+                <div id="error-message" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 rounded-lg mt-6">
+                    <p class="font-bold">Error</p>
+                    <p id="error-text"></p>
                 </div>
-            </form>
+
+                <div id="results" class="hidden mt-10 border-t border-gray-200 pt-8"  >
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Trip Estimate</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                            <span class="text-gray-600">Total Distance</span>
+                            <span id="distance" class="font-semibold text-gray-800 text-lg"></span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                            <span class="text-gray-600">Travel Time</span>
+                            <span id="duration" class="font-semibold text-gray-800 text-lg"></span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                            <span class="text-gray-600">Distance Cost (@ ₹19/km)</span>
+                            <span id="distance-cost" class="font-semibold text-gray-800 text-lg"></span>
+                        </div>
+                        <div class="flex justify-between items-center bg-gray-50 p-4 rounded-lg">
+                            <span class="text-gray-600">Driver's Allowance</span>
+                            <span id="driver-allowance" class="font-semibold text-gray-800 text-lg"></span>
+                        </div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t-2 border-dashed border-gray-300">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold text-gray-900">Total Estimated Cost</span>
+                            <span id="total-cost" class="text-3xl font-extrabold text-indigo-600"></span>
+                        </div>
+                        <div class="text-right mt-2">
+                            <span class="text-sm font-semibold text-red-500">*Toll & Parking Excluded Hence to check on for offers Call</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
+        <footer class="text-center mt-6 text-sm text-white-500">
+            <p>Powered by <a href="https://openrouteservice.org/" target="_blank" class="text-white-500 hover:underline">OpenRouteService</a>.</p>
+        </footer>
     </div>
-    <div class="array">
-        <h1>For the nos. from 1-n</h1>
-        <input placeholder="Type something here...." class="input" id="userInput" name="text" type="text"/>
-        <button id="sum">Sum</button>
-        <h2 id="result">Answer Will show here</h2>
-    </div>
-    <div class="datetime-container"> 
-        <h1>Current Date and Time</h1> 
-        <p id="datetime"></p> 
-    </div>
-    <script src="scripts.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>
