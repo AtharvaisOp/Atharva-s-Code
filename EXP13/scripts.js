@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- CONFIGURATION ---
     const ORS_API_KEY = 'eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6IjgwNTY4M2FmYzU3NTRhMjdhNzM3M2U0ZmJhNjUxY2VhIiwiaCI6Im11cm11cjY0In0=';
     const DISTANCE_RATE_PER_KM = 19; // Rupees per kilometer
-    const DRIVER_ALLOWANCE_PER_DAY = 500; // Fixed driver's allowance in Rupees per day
+    const DRIVER_ALLOWANCE_PER_DAY = 300; // Fixed driver's allowance in Rupees per day
 
     // --- DOM ELEMENT REFERENCES ---
     const calculateBtn = document.getElementById('calculate-btn');
