@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', function () {
             ]);
 
             const routeData = await getRoute(startCoordinates, endCoordinates);
-            // **REMOVED**: No longer fetching toll data
             const calculations = calculateCosts(routeData);
             displayResults(calculations);
 
@@ -96,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
         return data.features[0];
     }
 
-    // **REMOVED**: The entire getTolls function is gone.
 
     function calculateCosts(route) {
         const distanceKm = route.properties.summary.distance / 1000;
@@ -136,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
             const mDisplay = m > 0 ? m + (m == 1 ? " minute" : " minutes") : "";
             const fullDuration = dDisplay + hDisplay + mDisplay;
-            return fullDuration.trim().replace(/,$/, ''); // Remove trailing comma
+            return fullDuration.trim().replace(/,$/, ''); 
         }
 
         document.getElementById('distance').textContent = `${costs.distanceKm.toFixed(2)} km`;
